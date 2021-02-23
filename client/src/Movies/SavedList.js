@@ -1,13 +1,8 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export default function SavedList(props) {
 
-  let history = useHistory();
-
-  function historyPush (){
-      history.push(`/`)
-  }
 
   return (
     <div className="saved-list">
@@ -15,7 +10,9 @@ export default function SavedList(props) {
       {props.list.map(movie => (
         <span className="saved-movie">{movie.title}</span>
       ))}
-      <div onClick={historyPush} className="home-button">Home</div>
+      <Link to="/">
+      <div className="home-button">Home</div>
+      </Link>
     </div>
   );
 }

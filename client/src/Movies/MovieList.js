@@ -1,5 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function MovieList(props) {
 
@@ -18,7 +19,7 @@ export default function MovieList(props) {
 }
 
 function MovieDetails(props) {
-  const { title, director, metascore } = props.movie;
+  const { title, director, metascore,  } = props.movie;
 let history = useHistory();
 
   function historyPush (){
@@ -26,6 +27,7 @@ let history = useHistory();
   }
 
   return (
+    <Link to={`/movies/${props.movie.id}`}>
     <div onClick={historyPush} className="movie-card">
       <h2>{title}</h2>
       <div className="movie-director">
@@ -35,5 +37,6 @@ let history = useHistory();
         Metascore: <strong>{metascore}</strong>
       </div>
     </div>
+    </Link>
   );
 }
